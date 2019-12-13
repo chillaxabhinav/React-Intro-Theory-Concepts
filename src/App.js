@@ -5,27 +5,40 @@ import Person from './Person/Person';
 class App extends Component {
   state  = {
     person : [
-      {name : 'Abhi', age : 21},
-      {name : 'Second', age : 21}
-    ]
+      {id : 1,name : 'Abhi', age : 21},
+      {id:  2,name : 'Second', age : 23}
+    ],
+    showPerson : false
   }
 
-  switchNameHandler = (newname) =>{
+  deletePersonHandler =(personIndex) =>{
+    const persons = [...this.state.person];
+    persons.splice(personIndex,1);
+    this.setState({person : persons})
+  }
+
+  nameChangedHandler = (event , id) =>{
+    const personIndex = this.state.person.findIndex((p)=>{
+      return p.id === id;
+    })
+    const copyPersonObj = {
+      ...this.state.person[personIndex]
+    }
+    //const copyPersonObj = Object.assign({},this.state.person[personIndex]);
+    copyPersonObj.name = event.target.value;
+
+    const copyPersonArr = [...this.state.person];
+    
+    copyPersonArr[personIndex] = copyPersonObj;
     this.setState({
-      person : [
-      {name : newname, age : 22},
-      {name : 'Second', age : 21}
-    ]
+      person: copyPersonArr
     })
   }
 
-  changeNameHandler = (event) =>{
-    this.setState({
-      person: [
-        { name: 'Abhinav', age: 22 },
-        { name: event.target.value, age: 21 }
-      ]
-    })
+
+  togglePersonHandler = () =>{
+    const personShow = this.state.showPerson;
+    this.setState({showPerson : !personShow});
   }
 
 
@@ -36,12 +49,28 @@ class App extends Component {
       border : '1px solid blue',
       padding : '8px'
     }
+
+    let persons = null;
+    if (this.state.showPerson){
+      persons = (
+        <div>
+          {this.state.person.map((person,index) =>{
+            return <Person
+                      name={person.name}
+                      age={person.age}
+                      click = {() =>this.deletePersonHandler(index)}
+                      key ={person.id}
+                      changed = {(event) => this.nameChangedHandler(event,person.id)}
+                    />
+          })}
+        </div>
+      );
+    }
     return (
       <div className="App">
        <h1>My React App</h1>
-       <button style={Style} onClick={()=>this.switchNameHandler('Abhinav from switchname passed')}>Swich name</button>
-       <Person name={this.state.person[0].name} age={this.state.person[0].age} click={this.switchNameHandler}>My Hobbies: Development</Person>
-       <Person name={this.state.person[1].name} age={this.state.person[1].age} changed={this.changeNameHandler}/>
+       <button style={Style} onClick={this.togglePersonHandler}>Toggle and delete</button>
+        {persons}
       </div>
     );
   }
