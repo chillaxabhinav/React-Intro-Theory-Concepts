@@ -19,6 +19,15 @@ class App extends Component {
   }
 
 
+  // shouldComponentUpdate(nextProps , nextState){
+  //   if(nextProps.persons !== this.props.persons){
+  //     return true;
+  //   }
+  //   else{
+  //     return false;
+  //   }
+  // }
+
   // static getDerivedStateFromProps(props, state) {
   //   console.log('[App.js] getDerivedStateFromProps',props);
   //   return state;
