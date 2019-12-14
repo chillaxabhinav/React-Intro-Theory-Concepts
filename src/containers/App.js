@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Person from '../Components/Persons/Person/Person';
+import Person from '../components/Persons/Person/Person';
 // import ErrorBounday from './ErrorBoundary/ErrorBoundary';
 
 
