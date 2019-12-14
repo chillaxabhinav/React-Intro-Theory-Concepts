@@ -7,6 +7,8 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 
 class App extends Component {
+
+
   state  = {
     persons : [
       {id : 1,name : 'Abhi', age : 21},
@@ -15,6 +17,12 @@ class App extends Component {
     ],
     showPerson : false
   }
+
+
+  // static getDerivedStateFromProps(props, state) {
+  //   console.log('[App.js] getDerivedStateFromProps',props);
+  //   return state;
+  // }
 
   deletePersonHandler =(personIndex) =>{
     const persons = [...this.state.persons];
