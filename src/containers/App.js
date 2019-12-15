@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
+import cockpit from '../components/Cockpit/Cockpit';
 // import ErrorBounday from './ErrorBoundary/ErrorBoundary';
 
 
@@ -15,23 +16,10 @@ class App extends Component {
       {id:  2,name : 'Second', age : 23},
       {id: 3, name : 'third', age: 24}
     ],
-    showPerson : false
+    showPerson : false,
+    showCockpit : false
   }
 
-
-  // shouldComponentUpdate(nextProps , nextState){
-  //   if(nextProps.persons !== this.props.persons){
-  //     return true;
-  //   }
-  //   else{
-  //     return false;
-  //   }
-  // }
-
-  // static getDerivedStateFromProps(props, state) {
-  //   console.log('[App.js] getDerivedStateFromProps',props);
-  //   return state;
-  // }
 
   deletePersonHandler =(personIndex) =>{
     const persons = [...this.state.persons];
@@ -63,25 +51,21 @@ class App extends Component {
     this.setState({showPerson : !personShow});
   }
 
+  showCockpitHandler = () =>{
+    if(this.state.showCockpit){
+    this.setState({
+      showCockpit : false
+      })
+    }
+    else{
+      this.setState({
+        showCockpit : true
+      })
+    }
+}
 
   render() {
-    // const Style = {
-    //   backgroundColor : 'green',
-    //   color : 'white',
-    //   font : 'inherit',
-    //   border : '1px solid blue',
-    //   padding : '8px',
-    //   ':hover':{
-    //     backgroundColor :'lightgreen',
-    //     color : 'black'
-    //   }
-    // }
-
     let persons = null;
-
-
-    
-
 
     if (this.state.showPerson){
       persons = (
@@ -91,21 +75,25 @@ class App extends Component {
             changed = {this.nameChangedHandler}
           />
       );
-      // Style.backgroundColor = 'red';
-      // Style[':hover'] = {
-      //   backgroundColor : 'salmon',
-      //   color : 'black'
-      // }
+    }
 
-          
-
+    let myCockpit = null;
+    if(this.state.showCockpit){
+      myCockpit = (
+        <Cockpit
+          showPersons={this.state.showPerson}
+          persons={this.state.persons}
+          clicked={this.togglePersonHandler}
+        />
+      )
     }
 
    
     return (
  
       <div className={classes.App}>
-        <Cockpit showPersons ={this.state.showPerson} persons={this.state.persons} clicked={this.togglePersonHandler} />
+        <button onClick={this.showCockpitHandler} className={classes.cockpit}>Click to show cockpit</button>
+        {myCockpit}
         {persons}
       </div>
      
