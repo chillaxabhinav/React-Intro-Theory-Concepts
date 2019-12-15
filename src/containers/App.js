@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
+import WithClass from '../Auxiliary/WithClass';
 // import ErrorBounday from './ErrorBoundary/ErrorBoundary';
 
 
@@ -103,11 +104,11 @@ class App extends PureComponent {
    
     return (
  
-      <div className={classes.App}>
+      <WithClass classes={classes.App}>
         <button onClick={this.showCockpitHandler} className={classes.cockpit}>Click to show cockpit</button>
         {myCockpit}
         {persons}
-      </div>
+      </WithClass>
      
     );
   }
