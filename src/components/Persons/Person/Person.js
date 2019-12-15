@@ -21,8 +21,8 @@ class Person extends PureComponent {
 Person.propTypes = {
     click : PropTypes.func,
     name : PropTypes.string,
-    age : PropTypes.number
-
+    age : PropTypes.number,
+    changed : PropTypes.func
 }
 
 export default withClass(Person,classes.Person);
