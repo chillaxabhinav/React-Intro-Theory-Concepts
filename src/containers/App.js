@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent,Fragment } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../Auxiliary/WithClass';
+import withClass from '../Auxiliary/withClass';
 // import ErrorBounday from './ErrorBoundary/ErrorBoundary';
 
 
@@ -104,14 +104,14 @@ class App extends PureComponent {
    
     return (
  
-      <WithClass classes={classes.App}>
+      <Fragment>
         <button onClick={this.showCockpitHandler} className={classes.cockpit}>Click to show cockpit</button>
         {myCockpit}
         {persons}
-      </WithClass>
+      </Fragment>
      
     );
   }
 }
 
-export default App;
+export default withClass(App,classes.App);
