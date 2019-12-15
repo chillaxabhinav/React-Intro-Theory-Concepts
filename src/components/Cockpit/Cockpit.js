@@ -4,7 +4,7 @@ import classes from './Cockpit.css';
 
 const cockpit = (props) =>{
 
-    // Below duplicating componentDidMount() and componentWillUnmount() lifecycle hook, as is has no dependency because of empty array and will only run first time because of default behavior.
+    // === Below duplicating componentDidMount() and componentWillUnmount() lifecycle hook, as is has no dependency because of empty array and will only run first time because of default behavior. === //
     
     /*useEffect(()=>{
         console.log('Cockpit.js : useEffect function running');
@@ -17,7 +17,7 @@ const cockpit = (props) =>{
     });  */
 
 
-    // Below duplicating componentDidUpdate() lifecycle hook, as it has dependency on person component
+    // === Below duplicating componentDidUpdate() lifecycle hook, as it has dependency on person component ===//
     
     /*useEffect(()=>{
         console.log('Cockpit.js : useEffect function running');

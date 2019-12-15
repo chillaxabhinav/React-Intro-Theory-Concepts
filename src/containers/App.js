@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
@@ -6,7 +6,7 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 
 
-class App extends Component {
+class App extends PureComponent {
 
 
   state  = {
@@ -19,6 +19,19 @@ class App extends Component {
     showCockpit : false
   }
 
+  // ==== Used PureComponents so don't have to use this ==== //
+  // shouldComponentUpdate(nextProps,nextState){
+  //   if(
+  //     nextProps.persons !== this.props.persons ||
+  //     nextProps.changed !== this.props.changed ||
+  //     nextProps.clicked !== this.props.clicked 
+  //   ){
+  //     return true;
+  //   }
+  //   else{
+  //     return false;
+  //   }
+  // }
 
   deletePersonHandler =(personIndex) =>{
     const persons = [...this.state.persons];
