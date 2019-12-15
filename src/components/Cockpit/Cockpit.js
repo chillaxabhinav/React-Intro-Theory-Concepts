@@ -1,8 +1,14 @@
-import React from 'react';
+import React, {useEffect,useRef} from 'react';
 import classes from './Cockpit.css';
 
 
 const cockpit = (props) =>{
+
+    const toggleButtonRef = useRef(null);
+
+    useEffect(()=>{
+        toggleButtonRef.current.click();
+    },[]);
 
     // === Below duplicating componentDidMount() and componentWillUnmount() lifecycle hook, as is has no dependency because of empty array and will only run first time because of default behavior. === //
     
@@ -44,7 +50,9 @@ const cockpit = (props) =>{
         <div>
             <h1>Hi, I'm a react app</h1>
             <p className={assignedClasses.join(' ')}>This is really working!!</p>
-            <button className={btnClass.join(' ')} onClick={props.clicked}>Toggle and delete</button>
+            <button 
+                className={btnClass.join(' ')} 
+                onClick={props.clicked} ref={toggleButtonRef}> Toggle and delete </button>
        </div>
     );
 
