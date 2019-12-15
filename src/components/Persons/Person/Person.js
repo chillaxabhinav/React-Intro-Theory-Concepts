@@ -2,6 +2,7 @@ import React , {Fragment , PureComponent} from 'react';
 import classes from './Person.css';
 import Aux from '../../../Auxiliary/Auxiliary';
 import withClass from '../../../Auxiliary/withClass';
+import PropTypes from 'prop-types';
 
 
 class Person extends PureComponent {
@@ -14,6 +15,14 @@ class Person extends PureComponent {
             </Aux>
         )       
     }
+}
+
+
+Person.propTypes = {
+    click : PropTypes.func,
+    name : PropTypes.string,
+    age : PropTypes.number
+
 }
 
 export default withClass(Person,classes.Person);
