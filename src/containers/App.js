@@ -17,7 +17,8 @@ class App extends PureComponent {
       {id: 3, name : 'third', age: 24}
     ],
     showPerson : false,
-    showCockpit : false
+    showCockpit : false,
+    changeCounter : 0
   }
 
   // ==== Used PureComponents so don't have to use this ==== //
@@ -53,8 +54,11 @@ class App extends PureComponent {
     const copyPersonArr = [...this.state.persons];
     
     copyPersonArr[personIndex] = copyPersonObj;
-    this.setState({
-      persons: copyPersonArr
+    this.setState((prevState,props) =>{
+      return {
+        persons: copyPersonArr,
+        changeCounter : prevState.changeCounter + 1
+       }
     })
   }
 
