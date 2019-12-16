@@ -9,6 +9,7 @@ const persons = (props) =>   props.persons.map((person,index) =>{
                                     click = {() =>props.clicked(index)}
                                     key ={person.id}
                                     changed = {(event) => props.changed(event,person.id)}
+                                    isAuth = {props.isAuthenticated}
                                     />
                                 });
 

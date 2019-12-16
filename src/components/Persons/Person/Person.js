@@ -19,6 +19,7 @@ class Person extends PureComponent {
     render(){
         return (
             <Aux>
+            {this.props.isAuth ? <p>Authenticated</p> : <p>Please Log in</p>}
                 <p onClick={this.props.click}>I'm {this.props.name} and I'm {this.props.age} years old.</p>
                 <p>{this.props.children}</p>
                 <input

@@ -18,7 +18,8 @@ class App extends PureComponent {
     ],
     showPerson : false,
     showCockpit : false,
-    changeCounter : 0
+    changeCounter : 0,
+    authenticated : false
   }
 
   // ==== Used PureComponents so don't have to use this ==== //
@@ -79,7 +80,13 @@ class App extends PureComponent {
         showCockpit : true
       })
     }
-}
+};
+
+  loginHandler = () =>{
+    this.setState({
+      authenticated : true
+    })
+  }
 
   render() {
     let persons = null;
@@ -90,6 +97,7 @@ class App extends PureComponent {
             persons = {this.state.persons}
             clicked = {this.deletePersonHandler}
             changed = {this.nameChangedHandler}
+            isAuthenticated = {this.state.authenticated}
           />
       );
     }
@@ -101,6 +109,7 @@ class App extends PureComponent {
           showPersons={this.state.showPerson}
           personsLength={this.state.persons.length}
           clicked={this.togglePersonHandler}
+          login = {this.loginHandler}
         />
       )
     }

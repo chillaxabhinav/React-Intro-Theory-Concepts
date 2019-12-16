@@ -53,6 +53,7 @@ const cockpit = (props) =>{
             <button 
                 className={btnClass.join(' ')} 
                 onClick={props.clicked} ref={toggleButtonRef}> Toggle and delete </button>
+            <button onClick={props.login}>Login</button>
        </div>
     );
 
