@@ -3,6 +3,7 @@ import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import withClass from '../Auxiliary/withClass';
+import AuthContext from '../context/auth-context';
 // import ErrorBounday from './ErrorBoundary/ErrorBoundary';
 
 
@@ -109,7 +110,6 @@ class App extends PureComponent {
           showPersons={this.state.showPerson}
           personsLength={this.state.persons.length}
           clicked={this.togglePersonHandler}
-          login = {this.loginHandler}
         />
       )
     }
@@ -119,8 +119,10 @@ class App extends PureComponent {
  
       <Fragment>
         <button onClick={this.showCockpitHandler} className={classes.cockpit}>Click to show cockpit</button>
+        <AuthContext.Provider value={{authenticated:this.state.authenticated,login:this.loginHandler}}>
         {myCockpit}
         {persons}
+        </AuthContext.Provider>
       </Fragment>
      
     );

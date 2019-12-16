@@ -2,6 +2,7 @@ import React from 'react';
 import Person from './Person/Person';
 
 
+
 const persons = (props) =>   props.persons.map((person,index) =>{
                             return <Person
                                     name={person.name}
@@ -9,7 +10,6 @@ const persons = (props) =>   props.persons.map((person,index) =>{
                                     click = {() =>props.clicked(index)}
                                     key ={person.id}
                                     changed = {(event) => props.changed(event,person.id)}
-                                    isAuth = {props.isAuthenticated}
                                     />
                                 });
 
